@@ -1,4 +1,4 @@
-pragma solidity ^0.4.22;
+pragma solidity ^0.4.23;
 
 contract RegistryInterface {
   
@@ -13,47 +13,45 @@ contract RegistryInterface {
   struct Charity {
     string name;
     uint charityNumber;
-    mapping(address => DropBox) public boxMap;
+    mapping(address => DropBox) boxMap;
   }
 
-  struct Operator {
+  struct operator {
     string name;
-    string address;
+    string operatorAddress;
     uint phoneNumber;
-    string type;
-    mapping(address => DropBox) public boxMap;
+    string operatorType;
+    mapping(address => DropBox) boxMap;
   }
 
   struct Owner {
     string name;
-    string address;
+    string ownerAddress;
   }
 
   mapping(address => DropBox) public boxMap;
   mapping(address => Charity) public charityMap;
-  mapping(address => Operator) public operatorMap;
+  mapping(address => operator) public operatorMap;
   mapping(address => Owner) public ownerMap;
 
-  function getDropBox (address _dropBoxAddress);
+  function getDropBox (address _dropBoxAddress) external;
 
-  function getCharity (address _charityAddress);
+  function getCharity (address _charityAddress) external;
 
-  function getOperator (address _operatorAddress);
+  function getOperator (address _operatorAddress) external;
 
-  function getOwner (address _ownerAddress);
+  function getOwner (address _ownerAddress) external;
 
-  function setLocation (DropBox dropBox, string newLocation);
+  function setLocation (address _dropBoxAddress, string _newLocation) external;
 
-  function setOperator (DropBox dropBox, operator newOperator);
+  function changeOperator(address _dropBoxAddress, address _newOperatorAddress) external;
 
-  function changeOperator(DropBox dropBox, address newOperatorAddress) public;
+  function changeLocation(address _dropBoxAddress, string _newLocation) external;
 
-  function changeLocation(DropBox dropBox, string newLocation) public;
+  function unregisterBox(address _operatorAddress, address _dropBoxAddress) external;
 
-  function unregisterBox(Operator operator, address _dropBoxAddress) public;
+  function notifyCharity() private;
 
-  function notifyCharity();
-
-  function changeOwner (DropBox dropBox, address _newOwnerAddress);
+  function changeOwner (address _dropBoxAddress, address _newOwnerAddress) external;
 
 }
