@@ -1,115 +1,122 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.21;
 
 contract Registry {
-  
-  struct DropBox {
-    address charity;
-    address operator;
-    address owner;
-    string location;
-    string pickupTimes;
-  }
 
-  struct Charity {
-    string name;
-    uint charityNumber;
-    mapping(address => DropBox) boxMap;
-  }
+    struct DropBox {
+        address charity;
+        address operator;
+        address owner;
+        string location;
+        string pickupTimes;
+    }
 
-  struct operator {
-    string name;
-    string operatorAddress;
-    uint phoneNumber;
-    string operatorType;
-    mapping(address => DropBox) boxMap;
-  }
+    struct Charity {
+        string name;
+        uint charityNumber;
+        mapping(address => DropBox) boxMap;
+    }
 
-  struct Owner {
-    string name;
-    string ownerAddress;
-  }
+    struct Operator {
+        string name;
+        uint phoneNumber;
+        string operatorType;
+        mapping(address => DropBox) boxMap;
+    }
 
-  mapping(address => DropBox) public boxMap;
-  mapping(address => Charity) public charityMap;
-  mapping(address => operator) public operatorMap;
-  mapping(address => Owner) public ownerMap;
+    struct Owner {
+        string name;
+        string location;
+    }
 
-  // constructor
-  function Registry() public {
+    mapping(address => DropBox) public boxMap;
+    mapping(address => Charity) public charityMap;
+    mapping(address => Operator) public operatorMap;
+    mapping(address => Owner) public ownerMap;
+
+    // constructor
+    function Registry() public {}
+
+    /* public flow */
+
+    function createDropBox (
+        address charity, 
+        address operator,
+        address owner,
+        string location,
+        string pickupTimes,
+        address dropBoxAddress) public {
+
+        boxMap[dropBoxAddress] = DropBox (
+            {
+            charity: charity,
+            operator: operator,
+            owner: owner,
+            location: location,
+            pickupTimes: pickupTimes
+            }
+        );
+    }
+
+    function createCharity (string name, uint charityNumber) public {
+
+        charityMap[msg.sender] = Charity (
+            {
+            name: name,
+            charityNumber: charityNumber
+            }
+        );
+    }
     
-  }
+    function createOperator (
+        string name,
+        uint phoneNumber,
+        string operatorType) public {
 
-/* public flow */
+        operatorMap[msg.sender] = Operator (
+            {
+            name: name,
+            phoneNumber: phoneNumber,
+            operatorType: operatorType
+            }
+        );
+    }
 
-  function createDropBox (address charity,
-    address operator,
-    address owner,
-    string location,
-    string pickupTimes,
-    address _dropBoxAddress) {
+    function createOwner (string name, string location) public {
 
-    boxMap[_dropBoxAddress] = dropBox (
-      {
-        charity: charity,
-        operator: operator,
-        owner: owner,
-        location: location,
-        pickupTimes: pickupTimes
-      }
-    );
-  }
-
-  function createCharity (string name, uint charityNumber, address _dropBoxAddress) {
-
-    mapping(address => DropBox) charityBoxMap;
-    charityBoxMap[_dropBoxAddress] = dropBox;
-    charityMap[msg.sender] = Charity (
-      {
-        name: name,
-        charityNumber: charityNumber,
-        boxMap: charityBoxMap
-      }
-    );
-  }
-
-  function getOwner (address _ownerAddress) private returns (Owner) {
-    return ownerMap[_ownerAddress];
-  }
-
-  function getDropBox (address _dropBoxAddress) private returns (DropBox) {
-    return boxMap[_dropBoxAddress];
-  }
-
-  function getCharity (address _charityAddress) private returns (Charity) {
-    return charityMap[_charityAddress];
-  }
-
-  function getOperator (address _operatorAddress) private returns (operator) {
-    return operatorMap[_operatorAddress];
-  }
-
-  function setLocation (address _dropBoxAddress, string _newLocation) external {
+        ownerMap[msg.sender] = Owner (
+            {
+            name: name,
+            location: location
+            }
+        );
+    }
     
-    
-    boxMap[_dropBoxAddress] = DropBox(
-      {
-        charity: 
-        operator:
-        owner:
-        location:
-        pickupTimes:
-      }
-    )
-  }
+    // function getOwner (address _ownerAddress) private returns (Owner) {
+    //     return ownerMap[_ownerAddress];
+    // }
 
-  function changeOperator(address _dropBoxAddress, address _newOperatorAddress) external;
+    // function getDropBox (address _dropBoxAddress) private returns (DropBox) {
+    //     return boxMap[_dropBoxAddress];
+    // }
 
-  function changeLocation(address _dropBoxAddress, string _newLocation) external;
+    // function getCharity (address _charityAddress) private returns (Charity) {
+    //     return charityMap[_charityAddress];
+    // }
 
-  function unregisterBox(address _operatorAddress, address _dropBoxAddress) external;
+    // function getOperator (address _operatorAddress) private returns (operator) {
+    //     return operatorMap[_operatorAddress];
+    // }
 
-  function notifyCharity() private;
+    // function setLocation (address _dropBoxAddress, string _newLocation) external;
 
-  function changeOwner (address _dropBoxAddress, address _newOwnerAddress) external;
+    // function changeOperator(address _dropBoxAddress, address _newOperatorAddress) external;
+
+    // function changeLocation(address _dropBoxAddress, string _newLocation) external;
+
+    // function unregisterBox(address _operatorAddress, address _dropBoxAddress) external;
+
+    // function notifyCharity() private;
+
+    // function changeOwner (address _dropBoxAddress, address _newOwnerAddress) external;
 
 }
