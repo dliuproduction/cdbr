@@ -7,7 +7,7 @@ contract Registry {
         address operator;
         address owner;
         string location;
-        string pickupTimes;
+        string time;
     }
 
     struct Charity {
@@ -43,18 +43,23 @@ contract Registry {
         address operator,
         address owner,
         string location,
-        string pickupTimes,
+        string time,
         address dropBoxAddress) public {
-
-        boxMap[dropBoxAddress] = DropBox (
+            
+        DropBox memory dropBox = DropBox (
             {
             charity: charity,
             operator: operator,
             owner: owner,
             location: location,
-            pickupTimes: pickupTimes
+            time: time
             }
         );
+        
+        boxMap[dropBoxAddress] = dropBox;
+        
+        charityMap[charity].boxMap[dropBoxAddress] = dropBox;
+        operatorMap[operator].boxMap[dropBoxAddress] = dropBox;
     }
 
     function createCharity (string name, uint charityNumber) public {
@@ -91,6 +96,57 @@ contract Registry {
         );
     }
     
+    function deleteDropBox (address dropBoxAddress) public {
+        delete boxMap[dropBoxAddress];
+    }
+    
+    function deleteCharity (address charityAddress) public {
+        delete charityMap[charityAddress];
+    }
+    
+    function deleteOperator (address operatorAddress) public {
+        delete operatorMap[operatorAddress];
+    }
+    
+    function deleteOwner (address ownerAddress) public {
+        delete ownerMap[ownerAddress];
+    }
+    
+    function changeCharity (address dropBoxAddress, address newCharityAddress) public {
+        boxMap[dropBoxAddress].charity = newCharityAddress;
+    }
+    
+    function changeOperator (address dropBoxAddress, address newOperatorAddress) public {
+        boxMap[dropBoxAddress].operator = newOperatorAddress;
+    }
+    
+    function changeOwner (address dropBoxAddress, address newOwnerAddress) public {
+        boxMap[dropBoxAddress].owner = newOwnerAddress;
+    }
+    
+    function changeLocation (address dropBoxAddress, string newLocation) public {
+        boxMap[dropBoxAddress].location = newLocation;
+    }
+    
+    function changeTime (address dropBoxAddress, string newTime) public {
+        boxMap[dropBoxAddress].location = newTime;
+    }
+
+    function charityUnregisterBox (address charityAddress, address dropBoxAddress) public {
+        delete charityMap[charityAddress].boxMap[dropBoxAddress];
+        delete boxMap[dropBoxAddress].charity;
+    }
+    
+    function operatorUnregisterBox (address operatorAddress, address dropBoxAddress) public {
+        delete operatorMap[operatorAddress].boxMap[dropBoxAddress];
+        delete boxMap[dropBoxAddress].operator;
+    }
+
+    function ownerUnregisterBox (address ownerAddress, address dropBoxAddress) public {
+        delete boxMap[dropBoxAddress].owner;
+    }
+    
+    
     // function getOwner (address _ownerAddress) private returns (Owner) {
     //     return ownerMap[_ownerAddress];
     // }
@@ -107,16 +163,9 @@ contract Registry {
     //     return operatorMap[_operatorAddress];
     // }
 
-    // function setLocation (address _dropBoxAddress, string _newLocation) external;
-
-    // function changeOperator(address _dropBoxAddress, address _newOperatorAddress) external;
-
-    // function changeLocation(address _dropBoxAddress, string _newLocation) external;
-
-    // function unregisterBox(address _operatorAddress, address _dropBoxAddress) external;
-
-    // function notifyCharity() private;
-
-    // function changeOwner (address _dropBoxAddress, address _newOwnerAddress) external;
+    // function notifyCharity(address charityAddress, string message) private {
+    // 
+    // }
+   
 
 }
