@@ -42,18 +42,28 @@ contract Registry {
     mapping(address => Owner) public ownerMap;
 
     // constructor
-    function Registry() public {}
+    function Registry() public {
+        createDropBox("test box", "1800 McGill College", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        createCharity("test charity", 12345);
+        createOperator("test operator", 5141234567, "authorized personel");
+        createOwner("test owner", "1800 McGill College");
+        setCharity(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        setOperator(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        setOwner(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+    }
 
     /* public flow */
     
-    function donate (address dropBoxAddress) payable {
+    function donate (address dropBoxAddress) payable public returns (bool) {
         if(boxMap[dropBoxAddress].isSet) {
-            DropBox memory dropBox = boxMap[dropBoxAddress];
-            dropBox.balance += msg.value;
+            boxMap[dropBoxAddress].balance += msg.value;
+            return false;
         }
+        
+        return true;
     }
     
-    function withdraw (address dropBoxAddress) public {
+    function withdraw (address dropBoxAddress) public returns (bool) {
         if(boxMap[dropBoxAddress].isSet) {
             DropBox memory dropBox = boxMap[dropBoxAddress];
             if ((charityMap[msg.sender].isSet && dropBox.charity == msg.sender) 
@@ -62,10 +72,10 @@ contract Registry {
                 address receiver = msg.sender;
                 uint amount = dropBox.balance;
                 receiver.transfer(amount);
-                dropBox.balance = 0;
-                
+                boxMap[dropBoxAddress].balance = 0;
+                return true;
             } else {
-                throw;
+                return false;
             }
         }
     }
@@ -73,7 +83,7 @@ contract Registry {
     function createDropBox (
         string location,
         string time,
-        address dropBoxAddress) public {
+        address dropBoxAddress) public returns (bool) {
             
         DropBox memory dropBox = DropBox (
             {
@@ -87,9 +97,10 @@ contract Registry {
             }
         );
         boxMap[dropBoxAddress] = dropBox;
+        return true;
     }
 
-    function createCharity (string name, uint charityNumber) public {
+    function createCharity (string name, uint charityNumber) public returns (bool) {
         
         charityMap[msg.sender] = Charity (
             {
@@ -98,13 +109,13 @@ contract Registry {
             isSet: true
             }
         );
-        
+        return true;
     }
     
     function createOperator (
         string name,
         uint phoneNumber,
-        string operatorType) public {
+        string operatorType) public returns (bool)  {
 
         operatorMap[msg.sender] = Operator (
             {
@@ -114,9 +125,11 @@ contract Registry {
             isSet: true
             }
         );
+        
+        return true;
     }
 
-    function createOwner (string name, string location) public {
+    function createOwner (string name, string location) public returns (bool) {
 
         ownerMap[msg.sender] = Owner (
             {
@@ -125,91 +138,92 @@ contract Registry {
             isSet: true
             }
         );
+        
+        return true;
     }
     
-    function setCharity (address dropBoxAddress) public {
+    function setCharity (address dropBoxAddress) public returns (bool) {
         // check drop box and charity exist and drop box currently has no associated charity
         if (boxMap[dropBoxAddress].isSet
         && charityMap[msg.sender].isSet
         && (boxMap[dropBoxAddress].charity == 0)) {
             boxMap[dropBoxAddress].charity = msg.sender;
+            return true;
         }
+        return false;
     }
     
-    function setOperator (address dropBoxAddress) public {
+    function setOperator (address dropBoxAddress) public returns (bool) {
         // check drop box and operator exist and drop box currently has no associated operator
         if (boxMap[dropBoxAddress].isSet
         && operatorMap[msg.sender].isSet
         && (boxMap[dropBoxAddress].operator == 0)) {
             boxMap[dropBoxAddress].operator = msg.sender;
+            return true;
         }
+        return false;
     }
     
-    function setOwner (address dropBoxAddress) public {
+    function setOwner (address dropBoxAddress) public returns (bool) {
         // check drop box and owner exist and drop box currently has no associated owner
         if (boxMap[dropBoxAddress].isSet
         && ownerMap[msg.sender].isSet
         && (boxMap[dropBoxAddress].owner == 0)) {
             boxMap[dropBoxAddress].owner = msg.sender;
+            return true;
         }
+        return false;
     }
     
-    function changeLocation (address dropBoxAddress, string location) public {
+    function changeLocation (address dropBoxAddress, string location) public returns (bool) {
         boxMap[dropBoxAddress].location = location;
+        return true;
     }
     
-    function changeTime (address dropBoxAddress, string time) public {
+    function changeTime (address dropBoxAddress, string time) public returns (bool) {
         boxMap[dropBoxAddress].time = time;
+        return true;
     }
 
-    function charityUnregisterBox (address charityAddress, address dropBoxAddress) public {
+    function charityUnregisterBox (address charityAddress, address dropBoxAddress) public returns (bool) {
         delete charityMap[charityAddress].boxMap[dropBoxAddress];
         delete boxMap[dropBoxAddress].charity;
+        return true;
     }
     
-    function operatorUnregisterBox (address operatorAddress, address dropBoxAddress) public {
+    function operatorUnregisterBox (address operatorAddress, address dropBoxAddress) public returns (bool) {
         delete operatorMap[operatorAddress].boxMap[dropBoxAddress];
         delete boxMap[dropBoxAddress].operator;
+        return true;
     }
 
-    function ownerUnregisterBox (address ownerAddress, address dropBoxAddress) public {
+    function ownerUnregisterBox (address ownerAddress, address dropBoxAddress) public returns (bool) {
         delete boxMap[dropBoxAddress].owner;
+        return true;
     }
     
-    function deleteDropBox (address dropBoxAddress) public {
+    function deleteDropBox (address dropBoxAddress) public returns (bool) {
         delete boxMap[dropBoxAddress];
+        return true;
     }
     
-    function deleteCharity (address charityAddress) public {
+    function deleteCharity (address charityAddress) public returns (bool) {
         delete charityMap[charityAddress];
+        return true;
     }
     
-    function deleteOperator (address operatorAddress) public {
+    function deleteOperator (address operatorAddress) public returns (bool) {
         delete operatorMap[operatorAddress];
+        return true;
     }
     
-    function deleteOwner (address ownerAddress) public {
+    function deleteOwner (address ownerAddress) public returns (bool) {
         delete ownerMap[ownerAddress];
+        return true;
     }    
-    // function getOwner (address _ownerAddress) private returns (Owner) {
-    //     return ownerMap[_ownerAddress];
-    // }
-
-    // function getDropBox (address _dropBoxAddress) private returns (DropBox) {
-    //     return boxMap[_dropBoxAddress];
-    // }
-
-    // function getCharity (address _charityAddress) private returns (Charity) {
-    //     return charityMap[_charityAddress];
-    // }
-
-    // function getOperator (address _operatorAddress) private returns (operator) {
-    //     return operatorMap[_operatorAddress];
-    // }
 
     // function notifyCharity(address charityAddress, string message) private {
     // 
     // }
    
-
 }
