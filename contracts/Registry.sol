@@ -42,7 +42,7 @@ contract Registry {
 
     // constructor
     function Registry() public {
-        createDropBox("test box", "45.511950", "-73.570092", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        createDropBox("45.511950", "-73.570092", "mondays at 4PM", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
         createCharity("test charity", 12345);
         createOperator("test operator", 5141234567, "authorized personel");
         createOwner("test owner", "45.511950", "-73.570092");
@@ -53,7 +53,7 @@ contract Registry {
 
     /* public flow */
     
-    function donate (address dropBoxAddress) payable returns (bool) {
+    function donate (address dropBoxAddress) payable public returns (bool) {
         if(boxMap[dropBoxAddress].isSet) {
             boxMap[dropBoxAddress].balance += msg.value;
             return false;
@@ -188,19 +188,19 @@ contract Registry {
         return true;
     }
 
-    function charityUnregisterBox (address charityAddress, address dropBoxAddress) public returns (bool) {
-        delete charityMap[charityAddress].boxMap[dropBoxAddress];
+    function charityUnregisterBox (address dropBoxAddress) public returns (bool) {
+        delete charityMap[msg.sender].boxMap[dropBoxAddress];
         delete boxMap[dropBoxAddress].charity;
         return true;
     }
     
-    function operatorUnregisterBox (address operatorAddress, address dropBoxAddress) public returns (bool) {
-        delete operatorMap[operatorAddress].boxMap[dropBoxAddress];
+    function operatorUnregisterBox (address dropBoxAddress) public returns (bool) {
+        delete operatorMap[msg.sender].boxMap[dropBoxAddress];
         delete boxMap[dropBoxAddress].operator;
         return true;
     }
 
-    function ownerUnregisterBox (address ownerAddress, address dropBoxAddress) public returns (bool) {
+    function ownerUnregisterBox (address dropBoxAddress) public returns (bool) {
         delete boxMap[dropBoxAddress].owner;
         return true;
     }
