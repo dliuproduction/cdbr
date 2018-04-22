@@ -2,14 +2,12 @@ pragma solidity ^0.4.21;
 
 contract Registry {
     
-    // address emptyAddress = 0x0000000000000000000000000000000000000000;
-    mapping(address => DropBox) emptyMap;
-    
     struct DropBox {
         address charity;
         address operator;
         address owner;
-        string location;
+        string latitude;
+        string longitude;
         string time;
         uint balance;
         bool isSet;
@@ -32,7 +30,8 @@ contract Registry {
 
     struct Owner {
         string name;
-        string location;
+        string latitude;
+        string longitude;
         bool isSet;
     }
 
@@ -43,10 +42,10 @@ contract Registry {
 
     // constructor
     function Registry() public {
-        createDropBox("test box", "1800 McGill College", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        createDropBox("test box", "45.511950", "-73.570092", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
         createCharity("test charity", 12345);
         createOperator("test operator", 5141234567, "authorized personel");
-        createOwner("test owner", "1800 McGill College");
+        createOwner("test owner", "45.511950", "-73.570092");
         setCharity(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
         setOperator(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
         setOwner(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
@@ -54,7 +53,7 @@ contract Registry {
 
     /* public flow */
     
-    function donate (address dropBoxAddress) payable public returns (bool) {
+    function donate (address dropBoxAddress) payable returns (bool) {
         if(boxMap[dropBoxAddress].isSet) {
             boxMap[dropBoxAddress].balance += msg.value;
             return false;
@@ -81,7 +80,8 @@ contract Registry {
     }
 
     function createDropBox (
-        string location,
+        string latitude,
+        string longitude,
         string time,
         address dropBoxAddress) public returns (bool) {
             
@@ -90,7 +90,8 @@ contract Registry {
             charity: address(0),
             operator: address(0),
             owner: address(0),
-            location: location,
+            latitude: latitude,
+            longitude: longitude,
             time: time,
             balance: 0,
             isSet: true
@@ -129,12 +130,13 @@ contract Registry {
         return true;
     }
 
-    function createOwner (string name, string location) public returns (bool) {
+    function createOwner (string name, string latitude, string longitude) public returns (bool) {
 
         ownerMap[msg.sender] = Owner (
             {
             name: name,
-            location: location,
+            latitude: latitude,
+            longitude: longitude,
             isSet: true
             }
         );
@@ -175,8 +177,9 @@ contract Registry {
         return false;
     }
     
-    function changeLocation (address dropBoxAddress, string location) public returns (bool) {
-        boxMap[dropBoxAddress].location = location;
+    function changeLocation (address dropBoxAddress, string latitude, string longitude) public returns (bool) {
+        boxMap[dropBoxAddress].latitude = latitude;
+        boxMap[dropBoxAddress].longitude = longitude;
         return true;
     }
     
