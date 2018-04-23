@@ -40,19 +40,8 @@ contract Registry {
     mapping(address => Operator) public operatorMap;
     mapping(address => Owner) public ownerMap;
 
-    // constructor
-    function Registry() public {
-        createDropBox("45.511950", "-73.570092", "mondays at 4PM", 0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
-        createCharity("test charity", 12345);
-        createOperator("test operator", 5141234567, "authorized personel");
-        createOwner("test owner", "45.511950", "-73.570092");
-        setCharity(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
-        setOperator(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
-        setOwner(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
-    }
+    constructor() public {}
 
-    /* public flow */
-    
     function donate (address dropBoxAddress) payable public returns (bool) {
         if(boxMap[dropBoxAddress].isSet) {
             boxMap[dropBoxAddress].balance += msg.value;
@@ -224,9 +213,4 @@ contract Registry {
         delete ownerMap[ownerAddress];
         return true;
     }    
-
-    // function notifyCharity(address charityAddress, string message) private {
-    // 
-    // }
-   
 }
