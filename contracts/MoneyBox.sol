@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
 contract MoneyBox {
     
@@ -9,41 +9,40 @@ contract MoneyBox {
     
     function () external payable {}
     
-    function deleteCharity() {
+    function deleteCharity() public {
         if (msg.sender == charity) {
             delete charity;
         }
     }
-    
-    function deleteOperator() {
+     
+    function deleteOperator() public {
         if (msg.sender == operator) {
             delete operator;
         }
     }
     
-    function setCharity () {
+    function setCharity () public {
         if (charity == 0){
             charity = msg.sender;
         }
     }
     
-    function setOperator () {
+    function setOperator () public {
         if (operator == 0){
             operator = msg.sender;
         }
     }
     
-    function getBalance () constant returns (uint) {
+    function getBalance () constant public returns (uint) {
         if (msg.sender == charity || msg.sender == operator) {
-            return this.balance / 1000000000000000000;
+            return this.balance;
         }
     }
     
-    function withDraw(uint amount) {
+    function withDraw(uint weiAmount) public {
         if (msg.sender == charity || msg.sender == operator) {
-            amount *= 1000000000000000000;
-            if (this.balance >= amount) {
-                msg.sender.transfer(amount);
+            if (this.balance >= weiAmount){
+                msg.sender.transfer(weiAmount);
             }
         }
     }
