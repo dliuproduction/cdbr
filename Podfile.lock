@@ -1,0 +1,88 @@
+PODS:
+  - Alamofire (4.7.2)
+  - Alamofire-Synchronous (4.0.0):
+    - Alamofire (~> 4.0)
+  - BigInt (3.0.1):
+    - SipHash (~> 1.2)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - CryptoSwift (0.9.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - GooglePlacesPicker (1.2)
+  - libsodium (1.0.12)
+  - QRCode (2.0)
+  - Result (3.0.0)
+  - secp256k1_ios (0.1.3)
+  - SipHash (1.2.0)
+  - SwiftyJSON (4.1.0)
+  - web3swift (0.5.5):
+    - Alamofire (~> 4.7)
+    - Alamofire-Synchronous (~> 4.0)
+    - BigInt (~> 3.0.1)
+    - CryptoSwift (~> 0.9.0)
+    - libsodium (~> 1.0.12)
+    - Result (~> 3.0.0)
+    - secp256k1_ios (~> 0.1.3)
+
+DEPENDENCIES:
+  - ChameleonFramework
+  - GoogleMaps
+  - GooglePlaces
+  - GooglePlacesPicker
+  - QRCode
+  - SwiftyJSON (~> 4.0)
+  - web3swift (from `https://github.com/BANKEX/web3swift.git`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Alamofire-Synchronous
+    - BigInt
+    - ChameleonFramework
+    - CryptoSwift
+    - GoogleMaps
+    - GooglePlaces
+    - GooglePlacesPicker
+    - libsodium
+    - QRCode
+    - Result
+    - secp256k1_ios
+    - SipHash
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  web3swift:
+    :git: https://github.com/BANKEX/web3swift.git
+
+CHECKOUT OPTIONS:
+  web3swift:
+    :commit: 093c08d59375502f4baaef3657836c46a72ab8aa
+    :git: https://github.com/BANKEX/web3swift.git
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
+  BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GooglePlacesPicker: 7fc917a2b8800d7d5a46ff1bfc4c0939c0e4e12e
+  libsodium: 9a8faa5ef2fa0d2d57bd7f7d79bf8fb7c1a9f0ea
+  QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
+  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+  secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
+  SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  web3swift: c495b050198367cc00393d974e6a756ac3c9b7c1
+
+PODFILE CHECKSUM: 561d3f8541f24b3e1da7603f1f5539689441b529
+
+COCOAPODS: 1.5.0

@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tnB-Y4-o9U">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reader Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="QRReaderController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTt-eE-0PT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5j-Go-deO">
+                                        <rect key="frame" x="165.5" y="38" width="44" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0D-3k-ef0" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="35" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="dismissButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h1q-G3-cno"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySE-Oh-aNq" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="283" y="35" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Restart"/>
+                                        <connections>
+                                            <action selector="restartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hE5-yy-ieY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Iya-jl-MYg"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR Code is Detected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7B-OO-V9a">
+                                <rect key="frame" x="0.0" y="531" width="375" height="136"/>
+                                <color key="backgroundColor" red="0.80000537630000002" green="0.79999023680000003" blue="0.81734954358395051" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="136" id="nWT-z2-LND"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Enable Camera Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBY-nu-Lb7">
+                                <rect key="frame" x="75" y="323" width="224" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.8862745098" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gTt-eE-0PT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8OF-cA-IxB"/>
+                            <constraint firstItem="M7B-OO-V9a" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Kzs-Dc-psm"/>
+                            <constraint firstItem="M7B-OO-V9a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aVq-dJ-wP2"/>
+                            <constraint firstItem="M7B-OO-V9a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kZW-IT-56H"/>
+                            <constraint firstItem="gTt-eE-0PT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mqX-Gw-kr6"/>
+                            <constraint firstItem="gTt-eE-0PT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="saW-EF-5Wj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="M7B-OO-V9a" id="oiM-Ma-uNI"/>
+                        <outlet property="topBar" destination="gTt-eE-0PT" id="3ST-A5-Fml"/>
+                        <segue destination="QGY-9h-ASB" kind="show" identifier="goToCheckLocation" id="MaF-Ss-mkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="944"/>
+        </scene>
+        <!--Public Location Controller-->
+        <scene sceneID="7cM-G0-q6c">
+            <objects>
+                <viewController id="QGY-9h-ASB" customClass="PublicLocationController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W55-rA-IU0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agq-EV-6SG">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r7-gg-EsI">
+                                        <rect key="frame" x="8" y="13" width="74" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="REPORT">
+                                            <color key="titleColor" red="0.92836290600000004" green="0.4048168063" blue="0.38428115839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reportField:" destination="QGY-9h-ASB" eventType="touchUpInside" id="7Ee-6E-TYK"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charity:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmR-Kk-tFc">
+                                        <rect key="frame" x="98" y="8" width="258" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="w64-MI-0fP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dy4-ms-ub7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdf-Qe-MrG">
+                                        <rect key="frame" x="98" y="21" width="258" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgh-Z0-ksV" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="21" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="dismissButtonPressed:" destination="QGY-9h-ASB" eventType="touchUpInside" id="bFN-qf-eqx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="z9X-N0-51C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Agq-EV-6SG" firstAttribute="trailing" secondItem="3FG-as-zi7" secondAttribute="trailing" id="15n-KC-Yl8"/>
+                            <constraint firstItem="dy4-ms-ub7" firstAttribute="leading" secondItem="3FG-as-zi7" secondAttribute="leading" id="3He-hm-44T"/>
+                            <constraint firstItem="Agq-EV-6SG" firstAttribute="leading" secondItem="3FG-as-zi7" secondAttribute="leading" id="HKk-0I-4zJ"/>
+                            <constraint firstItem="Agq-EV-6SG" firstAttribute="bottom" secondItem="3FG-as-zi7" secondAttribute="bottom" id="Ife-LS-7Ou"/>
+                            <constraint firstItem="dy4-ms-ub7" firstAttribute="trailing" secondItem="3FG-as-zi7" secondAttribute="trailing" id="VXc-uL-zwu"/>
+                            <constraint firstItem="dy4-ms-ub7" firstAttribute="top" secondItem="W55-rA-IU0" secondAttribute="top" id="mal-PY-MAU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3FG-as-zi7"/>
+                    </view>
+                    <connections>
+                        <outlet property="charityLabel" destination="CmR-Kk-tFc" id="Ru8-Ys-GhF"/>
+                        <outlet property="codeView" destination="dy4-ms-ub7" id="lXk-gK-arg"/>
+                        <outlet property="dismissButton" destination="Kgh-Z0-ksV" id="MZV-lh-wXu"/>
+                        <outlet property="donateView" destination="Agq-EV-6SG" id="PEb-HY-iOx"/>
+                        <outlet property="reportButton" destination="3r7-gg-EsI" id="DAf-pk-Ize"/>
+                        <outlet property="textField" destination="pdf-Qe-MrG" id="vMS-fv-El9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qdy-Yu-pk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82.400000000000006" y="1798.6506746626687"/>
+        </scene>
+        <!--Log In Controller-->
+        <scene sceneID="Z1M-9H-tQ9">
+            <objects>
+                <viewController id="Qo7-o6-48h" customClass="LogInController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o3a-n7-Xkl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-bo-2Xn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="346"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Donate" translatesAutoresizingMaskIntoConstraints="NO" id="b1G-s2-WOE">
+                                        <rect key="frame" x="27" y="8" width="320" height="303"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywl-xo-KfI">
+                                <rect key="frame" x="0.0" y="354" width="375" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKE-m9-IV5" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="117" y="34" width="140" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="handleSignUp:" destination="Qo7-o6-48h" eventType="touchUpInside" id="eCi-ey-fj7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.73545172636631972" blue="0.67756436258411468" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-0Y-bmJ">
+                                <rect key="frame" x="0.0" y="466" width="375" height="117"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJz-a9-8k4" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="117" y="28" width="140" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Register">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerButton:" destination="Qo7-o6-48h" eventType="touchUpInside" id="sg3-3O-02P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83647422853658182" green="0.98172634840011597" blue="0.96399737678783126" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000537630000002" green="0.79999023680000003" blue="0.80000048879999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="98k-hs-JPv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q0A-sw-2CD">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="L7z-Tk-K1p">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KpT-YJ-Cn8" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissPressed:" destination="Qo7-o6-48h" eventType="touchUpInside" id="OqJ-3t-nmq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="8rT-24-XpB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CKB-73-lpO" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="imageIsPressed:" destination="Qo7-o6-48h" eventType="touchUpInside" id="aAp-tc-n5W"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonOutlet" destination="CKB-73-lpO" id="2Pk-c0-IZ0"/>
+                        <outlet property="imageView" destination="b1G-s2-WOE" id="Uqd-IV-gbC"/>
+                        <segue destination="rSH-mk-LSc" kind="show" identifier="goToRegister" id="RYY-Jp-NYa"/>
+                        <segue destination="WUM-rj-4AH" kind="presentation" identifier="goToMainMenu" modalTransitionStyle="crossDissolve" id="dxu-9v-rop"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mBX-G0-Wks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384.8" y="-748.87556221889065"/>
+        </scene>
+        <!--Main Menu Controller-->
+        <scene sceneID="5zM-qx-Ta2">
+            <objects>
+                <viewController id="WUM-rj-4AH" customClass="MainMenuController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VgA-wO-yxy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmc-wU-NR2" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="118" y="187" width="140" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get QRCode"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="WUM-rj-4AH" eventType="touchUpInside" id="rfU-QU-Cwl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aH9-kN-wwm" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="118" y="273" width="140" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Box"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="WUM-rj-4AH" eventType="touchUpInside" id="EUF-Rb-yGl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5G-5C-ryd">
+                                <rect key="frame" x="119" y="45" width="136" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhN-5F-9JK" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="116" y="370" width="140" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Box"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="WUM-rj-4AH" eventType="touchUpInside" id="9VQ-km-XtB"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9JG-RX-X9J">
+                                <rect key="frame" x="0.0" y="454" width="375" height="213"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnj-fA-iwl" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="116" y="95" width="140" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Withdraw"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="WUM-rj-4AH" eventType="touchUpInside" id="9IC-Ev-niH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTj-GQ-scR" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="274" y="385" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Scan"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="WUM-rj-4AH" eventType="touchUpInside" id="60N-It-ktD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="3Yk-6Q-fox"/>
+                    </view>
+                    <connections>
+                        <outlet property="GetQRCodeButton" destination="Bmc-wU-NR2" id="Rii-gq-g9e"/>
+                        <outlet property="addBoxButton" destination="YhN-5F-9JK" id="PRT-ij-Kgq"/>
+                        <outlet property="changeParameterButton" destination="aH9-kN-wwm" id="KGb-te-NOv"/>
+                        <outlet property="notificationView" destination="9JG-RX-X9J" id="qmk-YH-afu"/>
+                        <outlet property="scanButton" destination="HTj-GQ-scR" id="Rhf-X6-CGB"/>
+                        <outlet property="typeLabel" destination="N5G-5C-ryd" id="uAs-qp-egc"/>
+                        <outlet property="withdrawButton" destination="fnj-fA-iwl" id="CEN-Ki-eup"/>
+                        <segue destination="i9c-S9-KXh" kind="show" identifier="goToGetQRCode" id="AL1-X2-oAg"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToQRReader" id="O87-KU-Fzr"/>
+                        <segue destination="UnS-eF-8AI" kind="show" identifier="goToChangeParameter" id="zD3-by-nF9"/>
+                        <segue destination="6Zw-kk-OQj" kind="show" identifier="goToCreateDonationBox" id="B1i-Yk-iEy"/>
+                        <segue destination="haU-9Z-1s6" kind="show" identifier="scanNewBox" id="TKl-Uu-Bze"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x6L-Xv-czf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986" y="9"/>
+        </scene>
+        <!--GetQR Code Controller-->
+        <scene sceneID="pRH-bl-zGP">
+            <objects>
+                <viewController id="i9c-S9-KXh" customClass="GetQRCodeController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bHo-pP-y0l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUK-Dm-9Ly">
+                                <rect key="frame" x="0.0" y="138" width="375" height="375"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="31f-Pz-HG4">
+                                        <rect key="frame" x="8" y="8" width="359" height="359"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="31f-Pz-HG4" secondAttribute="height" multiplier="1:1" id="qO7-zc-sVN"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="31f-Pz-HG4" firstAttribute="top" secondItem="AUK-Dm-9Ly" secondAttribute="top" constant="8" id="HKz-HU-DzM"/>
+                                    <constraint firstAttribute="trailing" secondItem="31f-Pz-HG4" secondAttribute="trailing" constant="8" id="OIV-xk-nJP"/>
+                                    <constraint firstItem="31f-Pz-HG4" firstAttribute="leading" secondItem="AUK-Dm-9Ly" secondAttribute="leading" constant="8" id="Ron-Fe-kqL"/>
+                                    <constraint firstItem="31f-Pz-HG4" firstAttribute="width" secondItem="AUK-Dm-9Ly" secondAttribute="height" multiplier="359:375" id="ZDh-Uh-Ijk"/>
+                                    <constraint firstAttribute="width" secondItem="AUK-Dm-9Ly" secondAttribute="height" multiplier="1:1" id="cgu-wo-3wN"/>
+                                    <constraint firstAttribute="bottom" secondItem="31f-Pz-HG4" secondAttribute="bottom" constant="8" id="qdO-fd-npz"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Key" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cok-dP-tsw">
+                                <rect key="frame" x="107" y="561" width="160" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="SIQ-Sz-SJx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-Je-wI9" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="145" y="602" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="l1a-nb-OxC"/>
+                                    <constraint firstAttribute="height" constant="30" id="qve-Ac-gXA"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveImage:" destination="i9c-S9-KXh" eventType="touchUpInside" id="Q8v-xu-rWX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsa-TJ-cK7" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="38" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="i9c-S9-KXh" eventType="touchUpInside" id="gqq-iT-m52"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AUK-Dm-9Ly" firstAttribute="leading" secondItem="plB-2p-Xvf" secondAttribute="leading" id="6Ww-hb-iob"/>
+                            <constraint firstItem="plB-2p-Xvf" firstAttribute="bottom" secondItem="r31-Je-wI9" secondAttribute="bottom" constant="35" id="FuC-vi-ZsG"/>
+                            <constraint firstItem="plB-2p-Xvf" firstAttribute="bottom" secondItem="AUK-Dm-9Ly" secondAttribute="bottom" constant="154" id="Ipx-Et-CZl"/>
+                            <constraint firstItem="r31-Je-wI9" firstAttribute="centerX" secondItem="bHo-pP-y0l" secondAttribute="centerX" id="V88-h8-dx0"/>
+                            <constraint firstItem="AUK-Dm-9Ly" firstAttribute="trailing" secondItem="plB-2p-Xvf" secondAttribute="trailing" id="dPp-4W-qH8"/>
+                            <constraint firstItem="Cok-dP-tsw" firstAttribute="centerX" secondItem="bHo-pP-y0l" secondAttribute="centerX" id="lK4-u4-gJl"/>
+                            <constraint firstItem="r31-Je-wI9" firstAttribute="top" secondItem="Cok-dP-tsw" secondAttribute="bottom" constant="20" id="xyH-dO-9cW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="plB-2p-Xvf"/>
+                    </view>
+                    <connections>
+                        <outlet property="qrCodeView" destination="31f-Pz-HG4" id="mk7-pV-45c"/>
+                        <outlet property="qrView" destination="AUK-Dm-9Ly" id="hzC-aM-Qu9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xjQ-ej-7Ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3570" y="103"/>
+        </scene>
+        <!--Get Donation BoxQR Controller-->
+        <scene sceneID="42Z-aX-8oi">
+            <objects>
+                <viewController id="6Zw-kk-OQj" customClass="GetDonationBoxQRController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hpe-Qj-dDf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbM-hq-CiN" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="22" y="20" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="6Zw-kk-OQj" eventType="touchUpInside" id="Kzs-cJ-8dB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xjc-3w-QTx">
+                                <rect key="frame" x="0.0" y="138" width="375" height="375"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a7o-LK-9Ck">
+                                        <rect key="frame" x="8" y="8" width="359" height="359"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="a7o-LK-9Ck" secondAttribute="height" multiplier="1:1" id="El5-Cf-B5o"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xjc-3w-QTx" secondAttribute="height" multiplier="1:1" id="Fvs-UO-8jf"/>
+                                    <constraint firstAttribute="trailing" secondItem="a7o-LK-9Ck" secondAttribute="trailing" constant="8" id="GuL-V5-16V"/>
+                                    <constraint firstItem="a7o-LK-9Ck" firstAttribute="top" secondItem="Xjc-3w-QTx" secondAttribute="top" constant="8" id="Pyy-EB-QWb"/>
+                                    <constraint firstItem="a7o-LK-9Ck" firstAttribute="leading" secondItem="Xjc-3w-QTx" secondAttribute="leading" constant="8" id="r3K-hg-gLn"/>
+                                    <constraint firstItem="a7o-LK-9Ck" firstAttribute="width" secondItem="Xjc-3w-QTx" secondAttribute="height" multiplier="359:375" id="sRm-U4-0G6"/>
+                                    <constraint firstAttribute="bottom" secondItem="a7o-LK-9Ck" secondAttribute="bottom" constant="8" id="vsz-WW-7za"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropbox QR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7z-IW-AOP">
+                                <rect key="frame" x="113" y="574" width="149" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="149" id="EzA-IP-VtO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAVE THIS BEFORE LEAVING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w7-M1-08O">
+                                <rect key="frame" x="111" y="603" width="153" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="jdR-pC-6bh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbH-d7-rEg" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="153" y="625" width="69" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="d78-wh-AzQ"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveImage:" destination="6Zw-kk-OQj" eventType="touchUpInside" id="Zvf-I5-6bx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xjc-3w-QTx" firstAttribute="trailing" secondItem="Gsa-7T-iNj" secondAttribute="trailing" id="6io-td-Cvp"/>
+                            <constraint firstItem="Gsa-7T-iNj" firstAttribute="bottom" secondItem="Xjc-3w-QTx" secondAttribute="bottom" constant="154" id="B4W-F6-CAo"/>
+                            <constraint firstItem="Xjc-3w-QTx" firstAttribute="leading" secondItem="Gsa-7T-iNj" secondAttribute="leading" id="DeK-aI-9Kv"/>
+                            <constraint firstItem="wbH-d7-rEg" firstAttribute="centerX" secondItem="Hpe-Qj-dDf" secondAttribute="centerX" id="Q3V-hu-iVq"/>
+                            <constraint firstItem="Gsa-7T-iNj" firstAttribute="bottom" secondItem="0w7-M1-08O" secondAttribute="bottom" constant="50" id="TWJ-zE-o6U"/>
+                            <constraint firstItem="0w7-M1-08O" firstAttribute="centerX" secondItem="Hpe-Qj-dDf" secondAttribute="centerX" id="Zkn-ae-xpq"/>
+                            <constraint firstItem="Gsa-7T-iNj" firstAttribute="bottom" secondItem="wbH-d7-rEg" secondAttribute="bottom" constant="12" id="aIL-cK-mZd"/>
+                            <constraint firstItem="0w7-M1-08O" firstAttribute="top" secondItem="r7z-IW-AOP" secondAttribute="bottom" constant="8" id="cb3-5K-MY4"/>
+                            <constraint firstItem="r7z-IW-AOP" firstAttribute="centerX" secondItem="Hpe-Qj-dDf" secondAttribute="centerX" id="fT3-sr-Tnn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gsa-7T-iNj"/>
+                    </view>
+                    <connections>
+                        <outlet property="qrCodeView" destination="a7o-LK-9Ck" id="bxC-ts-JXM"/>
+                        <outlet property="qrView" destination="Xjc-3w-QTx" id="tis-71-75o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXD-dy-GTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="1074"/>
+        </scene>
+        <!--ScanQR Controller-->
+        <scene sceneID="p4B-GX-0kS">
+            <objects>
+                <viewController id="haU-9Z-1s6" customClass="ScanQRController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="03T-8N-mpy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wc5-cH-7pV">
+                                <rect key="frame" x="0.0" y="135" width="375" height="372"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaJ-Bk-jXe">
+                                        <rect key="frame" x="8" y="8" width="359" height="362"/>
+                                        <state key="normal" title="Insert Dropbox QR">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeImagePressed:" destination="haU-9Z-1s6" eventType="touchUpInside" id="guv-Ww-CLC"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cdh-Ip-BvI">
+                                        <rect key="frame" x="8" y="5" width="359" height="359"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="cdh-Ip-BvI" secondAttribute="height" multiplier="1:1" id="anL-dU-rBY"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wc5-cH-7pV" secondAttribute="height" multiplier="1:1" constant="2.98" id="CG0-RB-exb"/>
+                                    <constraint firstAttribute="bottom" secondItem="uaJ-Bk-jXe" secondAttribute="bottom" constant="2" id="KDa-jv-1jX"/>
+                                    <constraint firstItem="uaJ-Bk-jXe" firstAttribute="top" secondItem="wc5-cH-7pV" secondAttribute="top" constant="8" id="iHl-r4-r61"/>
+                                    <constraint firstAttribute="trailing" secondItem="uaJ-Bk-jXe" secondAttribute="trailing" constant="8" id="lNo-EW-Wv4"/>
+                                    <constraint firstAttribute="trailing" secondItem="cdh-Ip-BvI" secondAttribute="trailing" constant="8" id="oW8-DL-k6r"/>
+                                    <constraint firstItem="uaJ-Bk-jXe" firstAttribute="leading" secondItem="wc5-cH-7pV" secondAttribute="leading" constant="8" id="pAJ-xH-mce"/>
+                                    <constraint firstItem="cdh-Ip-BvI" firstAttribute="leading" secondItem="wc5-cH-7pV" secondAttribute="leading" constant="8" id="rAr-Cp-je9"/>
+                                    <constraint firstItem="cdh-Ip-BvI" firstAttribute="top" secondItem="wc5-cH-7pV" secondAttribute="top" constant="5" id="yfH-xe-v2q"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgG-z2-lRD" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="haU-9Z-1s6" eventType="touchUpInside" id="Za4-Ha-Zvv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWr-G1-3HF" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="145" y="569" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dPk-dv-d6f"/>
+                                    <constraint firstAttribute="width" constant="84" id="yM8-dH-juf"/>
+                                </constraints>
+                                <state key="normal" title="Add Box"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="haU-9Z-1s6" eventType="touchUpInside" id="F1a-tM-Lhr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fg-dG-Y75" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="275" y="94" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraPressed:" destination="haU-9Z-1s6" eventType="touchUpInside" id="hcY-pZ-Qrk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wc5-cH-7pV" firstAttribute="trailing" secondItem="kKs-n0-SAh" secondAttribute="trailing" id="0Bn-uD-okq"/>
+                            <constraint firstItem="kKs-n0-SAh" firstAttribute="bottom" secondItem="rWr-G1-3HF" secondAttribute="bottom" constant="68" id="QIp-8Z-IN6"/>
+                            <constraint firstItem="wc5-cH-7pV" firstAttribute="leading" secondItem="kKs-n0-SAh" secondAttribute="leading" id="Rt3-30-cjG"/>
+                            <constraint firstItem="rWr-G1-3HF" firstAttribute="centerX" secondItem="03T-8N-mpy" secondAttribute="centerX" id="mqj-n1-dy8"/>
+                            <constraint firstItem="kKs-n0-SAh" firstAttribute="bottom" secondItem="wc5-cH-7pV" secondAttribute="bottom" constant="160" id="xVP-Yw-CZM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kKs-n0-SAh"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="4Fg-dG-Y75" id="rPV-TP-1KM"/>
+                        <outlet property="dismissButton" destination="ZgG-z2-lRD" id="d8F-d7-Uhg"/>
+                        <outlet property="dropboxbutton" destination="uaJ-Bk-jXe" id="vDd-TB-Zle"/>
+                        <outlet property="imageView" destination="cdh-Ip-BvI" id="trC-eS-X8e"/>
+                        <outlet property="qrView" destination="wc5-cH-7pV" id="lTa-rp-JDo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkw-Zj-x2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3569" y="1074"/>
+        </scene>
+        <!--Change Parameter Controller-->
+        <scene sceneID="h5a-PX-TBZ">
+            <objects>
+                <viewController id="UnS-eF-8AI" customClass="ChangeParameterController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bi-Ho-774">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JM-zj-weQ">
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kJ-5j-epN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qp3-cH-w5U" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="283" y="112" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="thirdButtonPressed:" destination="UnS-eF-8AI" eventType="touchUpInside" id="vdQ-C4-S9g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Uo-EW0" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="112" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Remove"/>
+                                        <connections>
+                                            <action selector="removeButtonPressed:" destination="UnS-eF-8AI" eventType="touchUpInside" id="Z2u-XR-p3t"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgU-7C-NRI" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="145" y="112" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Change"/>
+                                        <connections>
+                                            <action selector="changeButtonPressed:" destination="UnS-eF-8AI" eventType="touchUpInside" id="MBc-aw-Vr7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duR-Ll-NGD" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="283" y="20" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startRecording:" destination="UnS-eF-8AI" eventType="touchUpInside" id="bta-Qe-cQ2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQJ-TR-Q41" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="dismissButtonPressed:" destination="UnS-eF-8AI" eventType="touchUpInside" id="GWz-pt-vfO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9JM-zj-weQ" firstAttribute="trailing" secondItem="GNd-tO-XSo" secondAttribute="trailing" id="7vp-3X-959"/>
+                            <constraint firstItem="6kJ-5j-epN" firstAttribute="trailing" secondItem="GNd-tO-XSo" secondAttribute="trailing" id="PUh-4j-Hur"/>
+                            <constraint firstItem="6kJ-5j-epN" firstAttribute="leading" secondItem="GNd-tO-XSo" secondAttribute="leading" id="dEA-eb-C7j"/>
+                            <constraint firstItem="9JM-zj-weQ" firstAttribute="top" secondItem="6kJ-5j-epN" secondAttribute="bottom" id="nAz-hr-r6t"/>
+                            <constraint firstItem="9JM-zj-weQ" firstAttribute="width" secondItem="6kJ-5j-epN" secondAttribute="height" multiplier="5:2" id="qlH-Tg-cvl"/>
+                            <constraint firstItem="9JM-zj-weQ" firstAttribute="leading" secondItem="GNd-tO-XSo" secondAttribute="leading" id="t2i-nV-UEn"/>
+                            <constraint firstItem="9JM-zj-weQ" firstAttribute="bottom" secondItem="GNd-tO-XSo" secondAttribute="bottom" id="wo4-qa-2dg"/>
+                            <constraint firstItem="6kJ-5j-epN" firstAttribute="top" secondItem="8bi-Ho-774" secondAttribute="top" id="zgt-tW-fld"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GNd-tO-XSo"/>
+                    </view>
+                    <connections>
+                        <outlet property="qrView" destination="9JM-zj-weQ" id="gCd-f7-xzi"/>
+                        <outlet property="removeButton" destination="rmr-Uo-EW0" id="Uki-Y6-TZp"/>
+                        <outlet property="secondButton" destination="FgU-7C-NRI" id="ifo-oP-Xu9"/>
+                        <outlet property="startRecordingButton" destination="duR-Ll-NGD" id="Eyg-x6-trv"/>
+                        <outlet property="thirdButton" destination="qp3-cH-w5U" id="0fF-xu-zcO"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goUpdate" id="l2e-rI-YXH"/>
+                        <segue destination="rPe-8l-Pvi" kind="show" id="6Zw-V1-Igb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hm1-iA-vPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1297" y="1074"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="F5O-Mr-afU">
+            <objects>
+                <viewController id="rSH-mk-LSc" customClass="RegisterController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="85l-hk-e6H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0q-UN-pFS">
+                                <rect key="frame" x="73" y="187" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTD-rI-xn3">
+                                <rect key="frame" x="73" y="75" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEf-cG-B2x">
+                                <rect key="frame" x="73" y="149" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="seh-M3-X0r">
+                                <rect key="frame" x="73" y="266" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Telephone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V17-L2-c5P">
+                                <rect key="frame" x="73" y="237" width="228" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oae-gM-8PL">
+                                <rect key="frame" x="0.0" y="318" width="375" height="131"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.88668465283205566" blue="0.88375726834874391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sG-ma-Kk3">
+                                <rect key="frame" x="73" y="111" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEA-QR-BwW" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="73" y="111" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <action selector="mapButtonPressed:" destination="rSH-mk-LSc" eventType="touchUpInside" id="tkL-2i-ERk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jeg-wf-IvA" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="126" y="504" width="122" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="handleRegister:" destination="rSH-mk-LSc" eventType="touchUpInside" id="z7w-h0-owW"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cardboardbox" translatesAutoresizingMaskIntoConstraints="NO" id="v3a-Xy-EEK">
+                                <rect key="frame" x="26" y="47" width="349" height="449"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select an Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a10-ci-BsS">
+                                <rect key="frame" x="84" y="237" width="217" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92941176470588238" green="0.88627450980392153" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="XxO-BM-bkN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="RvF-4F-r87"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="a10-ci-BsS" id="Mj1-1k-R3h"/>
+                        <outlet property="firstField" destination="1sG-ma-Kk3" id="D1E-Gf-GSy"/>
+                        <outlet property="firstLabel" destination="GTD-rI-xn3" id="25M-Ub-ljc"/>
+                        <outlet property="imageView" destination="v3a-Xy-EEK" id="rDb-Us-2Go"/>
+                        <outlet property="mapButton" destination="gEA-QR-BwW" id="94f-dX-pmM"/>
+                        <outlet property="pickerView" destination="oae-gM-8PL" id="sU3-Fb-zWa"/>
+                        <outlet property="secondField" destination="L0q-UN-pFS" id="ZTE-uv-N8A"/>
+                        <outlet property="secondLabel" destination="DEf-cG-B2x" id="RHV-x2-E8R"/>
+                        <outlet property="thirdField" destination="seh-M3-X0r" id="Ugv-LE-bwW"/>
+                        <outlet property="thirdLabel" destination="V17-L2-c5P" id="K0q-QR-7MV"/>
+                        <outletCollection property="charityField" destination="seh-M3-X0r" collectionClass="NSMutableArray" id="2Qu-s2-YmO"/>
+                        <outletCollection property="charityLabels" destination="V17-L2-c5P" collectionClass="NSMutableArray" id="cVa-gQ-mIx"/>
+                        <segue destination="rPe-8l-Pvi" kind="show" identifier="goToMap" id="bE2-mG-WU8"/>
+                        <segue destination="WUM-rj-4AH" kind="presentation" identifier="goToMainMenu" id="MVU-E1-muH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWy-Z6-0xI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2520.8000000000002" y="-751.57421289355329"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="fEo-Gl-VRE">
+            <objects>
+                <viewController id="rPe-8l-Pvi" customClass="MapController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ycs-4N-YIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZmH-U8-IgY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="HTa-c4-Oyc">
+                        <barButtonItem key="rightBarButtonItem" title="Go Place" id="H4i-IG-05f">
+                            <connections>
+                                <action selector="goPlacePressed:" destination="rPe-8l-Pvi" id="xu9-7f-Klu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="byo-ZG-NrW" kind="show" identifier="goToPlaces" id="vrz-M2-atB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xZ-RC-CzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3524" y="-750"/>
+        </scene>
+        <!--Places View Controller-->
+        <scene sceneID="9Ef-92-Yzd">
+            <objects>
+                <viewController id="byo-ZG-NrW" customClass="PlacesViewController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0PU-qW-lQC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2hl-ub-zP1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.92941176469999998" green="0.8862745098" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6jn-7X-K2k"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2hl-ub-zP1" id="8xn-O8-F9G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cyp-OT-7cI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4376.5" y="-752.5"/>
+        </scene>
+        <!--Start Up Controller-->
+        <scene sceneID="7HR-7w-XcK">
+            <objects>
+                <viewController id="tnB-Y4-o9U" customClass="StartUpController" customModule="CharityChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pxR-o6-Jma">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charity Checker" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Em6-He-3g7">
+                                <rect key="frame" x="53" y="63" width="269" height="247"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="60"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34H-lH-clS" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="490" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1Pi-e6-Y9u"/>
+                                </constraints>
+                                <state key="normal" title="Operator"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="tnB-Y4-o9U" eventType="touchUpInside" id="hk3-DM-8XJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRz-jj-UEy" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="567" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dtz-Eb-iza"/>
+                                </constraints>
+                                <state key="normal" title="Public"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="tnB-Y4-o9U" eventType="touchUpInside" id="hCd-uZ-tBK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rj3-hO-ZZ2" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="313" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0JR-3d-XuZ"/>
+                                </constraints>
+                                <state key="normal" title="Charity"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="tnB-Y4-o9U" eventType="touchUpInside" id="8zG-kc-kCg"/>
+                                </connections>
+                            </button>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Box" translatesAutoresizingMaskIntoConstraints="NO" id="mx0-br-X10">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="348"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="348" id="pTc-FT-lob"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-0n-n5x" customClass="CheckButton" customModule="CharityChecker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="405" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RwX-bm-mZ9"/>
+                                </constraints>
+                                <state key="normal" title="Owner"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="tnB-Y4-o9U" eventType="touchUpInside" id="VJp-Tr-Tpt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mx0-br-X10" firstAttribute="top" secondItem="pxR-o6-Jma" secondAttribute="top" id="001-Ti-aMI"/>
+                            <constraint firstItem="rj3-hO-ZZ2" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" constant="117" id="0aO-c7-MRI"/>
+                            <constraint firstItem="rj3-hO-ZZ2" firstAttribute="top" secondItem="Em6-He-3g7" secondAttribute="bottom" constant="3" id="3XM-2l-bHS"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="trailing" secondItem="Em6-He-3g7" secondAttribute="trailing" constant="53" id="Aeb-Fx-Dbh"/>
+                            <constraint firstItem="34H-lH-clS" firstAttribute="top" secondItem="qz0-0n-n5x" secondAttribute="bottom" constant="25" id="Dpk-Xu-iIV"/>
+                            <constraint firstItem="qz0-0n-n5x" firstAttribute="top" secondItem="rj3-hO-ZZ2" secondAttribute="bottom" constant="32" id="EiL-u2-GlT"/>
+                            <constraint firstItem="Em6-He-3g7" firstAttribute="top" secondItem="hJk-lz-e22" secondAttribute="top" constant="43" id="JYF-CE-0X1"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="trailing" secondItem="iRz-jj-UEy" secondAttribute="trailing" constant="118" id="M9K-aW-P1G"/>
+                            <constraint firstItem="mx0-br-X10" firstAttribute="trailing" secondItem="hJk-lz-e22" secondAttribute="trailing" id="Rh7-wK-Eny"/>
+                            <constraint firstItem="Em6-He-3g7" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" constant="53" id="SFb-qj-o2O"/>
+                            <constraint firstItem="34H-lH-clS" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" constant="117" id="UJ1-qx-3ER"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="trailing" secondItem="qz0-0n-n5x" secondAttribute="trailing" constant="118" id="Zau-Cc-Olf"/>
+                            <constraint firstItem="iRz-jj-UEy" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" constant="117" id="bsB-Gc-KpD"/>
+                            <constraint firstItem="34H-lH-clS" firstAttribute="height" secondItem="rj3-hO-ZZ2" secondAttribute="height" id="eLp-tD-E94"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="bottom" secondItem="iRz-jj-UEy" secondAttribute="bottom" constant="40" id="h9N-Th-7ao"/>
+                            <constraint firstItem="iRz-jj-UEy" firstAttribute="height" secondItem="rj3-hO-ZZ2" secondAttribute="height" id="kAQ-MI-iLe"/>
+                            <constraint firstItem="qz0-0n-n5x" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" constant="117" id="nUB-xj-9AR"/>
+                            <constraint firstItem="qz0-0n-n5x" firstAttribute="height" secondItem="rj3-hO-ZZ2" secondAttribute="height" id="oon-bg-amL"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="trailing" secondItem="34H-lH-clS" secondAttribute="trailing" constant="118" id="smc-F4-iet"/>
+                            <constraint firstItem="hJk-lz-e22" firstAttribute="trailing" secondItem="rj3-hO-ZZ2" secondAttribute="trailing" constant="118" id="uub-aY-jST"/>
+                            <constraint firstItem="mx0-br-X10" firstAttribute="leading" secondItem="hJk-lz-e22" secondAttribute="leading" id="wRC-3E-gRi"/>
+                            <constraint firstItem="iRz-jj-UEy" firstAttribute="top" secondItem="34H-lH-clS" secondAttribute="bottom" constant="17" id="zgY-0f-pgv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hJk-lz-e22"/>
+                    </view>
+                    <connections>
+                        <outlet property="charityButton" destination="rj3-hO-ZZ2" id="kJA-Y1-QMw"/>
+                        <outlet property="imageView" destination="mx0-br-X10" id="mU5-mM-BAe"/>
+                        <outlet property="operatorButton" destination="34H-lH-clS" id="1O5-JN-4db"/>
+                        <outlet property="ownerButton" destination="qz0-0n-n5x" id="N8P-EE-cHN"/>
+                        <outlet property="publicButton" destination="iRz-jj-UEy" id="dLJ-Lm-5ho"/>
+                        <outlet property="titleLabel" destination="Em6-He-3g7" id="q4P-CG-Zr7"/>
+                        <outletCollection property="buttons" destination="rj3-hO-ZZ2" collectionClass="NSMutableArray" id="ZtA-2S-OWy"/>
+                        <outletCollection property="buttons" destination="qz0-0n-n5x" collectionClass="NSMutableArray" id="bf2-mn-4XN"/>
+                        <outletCollection property="buttons" destination="34H-lH-clS" collectionClass="NSMutableArray" id="M2c-Jb-w3D"/>
+                        <outletCollection property="buttons" destination="iRz-jj-UEy" collectionClass="NSMutableArray" id="8cn-GI-bqu"/>
+                        <segue destination="jUA-AY-EeN" kind="show" identifier="goToLogIn" id="IzO-h2-xqW"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToQRReader" id="LJk-Kd-nVV"/>
+                        <segue destination="WUM-rj-4AH" kind="show" identifier="loggedIn" id="uAK-NG-WDq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2a-de-3Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447.19999999999999" y="-141.67916041979012"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nbu-LD-Gla">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jUA-AY-EeN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Fel-uy-Oeo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qo7-o6-48h" kind="relationship" relationship="rootViewController" id="PtG-OF-rNw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lug-b2-rhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445.60000000000002" y="-748.87556221889065"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Box" width="650" height="698"/>
+        <image name="Donate" width="1024" height="1024"/>
+        <image name="cardboardbox" width="373" height="360"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6Zw-V1-Igb"/>
+        <segue reference="MVU-E1-muH"/>
+        <segue reference="O87-KU-Fzr"/>
+    </inferredMetricsTieBreakers>
+</document>
