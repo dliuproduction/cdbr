@@ -1,0 +1,6 @@
+framework module Pods_CharityChecker {
+  umbrella header "Pods-CharityChecker-umbrella.h"
+
+  export *
+  module * { export * }
+}
