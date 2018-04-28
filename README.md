@@ -1,4 +1,6 @@
-# CDBR
+# Charity Drop Box Registry (CDBR) - an iOS App utilizing blockchain to eliminate fraudulent use of charity and stablish a digital charity donation network
+
+
 
 ### Registry Contract: https://rinkeby.etherscan.io/address/0x567bc5c90d29e44b73b2a9b155a9f98c9e797389
 
